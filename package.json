@@ -1,10 +1,14 @@
 {
-  "name": "leap-app",
+  "name": "castles-painting-tile-landing-page",
   "version": "1.0.0",
   "type": "module",
   "packageManager": "bun",
   "workspaces": [
     "backend",
     "frontend"
-  ]
+  ],
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "description": "Castle's Custom Painting & Tile - Landing Page with QR Code Marketing Kit"
 }

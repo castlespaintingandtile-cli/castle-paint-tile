@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Client, Local } from "@/client";
+import { Client, Local, Environment } from "@/client";
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,7 +22,9 @@ export default function ContactForm() {
     message: "",
   });
 
-  const backend = new Client(Local);
+  // Use production Encore URL when deployed, localhost for development
+  const isProduction = !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1');
+  const backend = new Client(isProduction ? Environment("production") : Local);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

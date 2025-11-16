@@ -38,7 +38,7 @@ export default function About() {
                 Locally Owned
               </h3>
               <p className="font-inter text-sm text-[#F2F2F2]">
-                Proud to serve Sarasota & Manatee County
+                Proud to serve Sarasota & Manatee, Tampa & St. Petersburg
               </p>
             </div>
           </div>

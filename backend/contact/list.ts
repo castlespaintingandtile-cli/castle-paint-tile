@@ -1,5 +1,7 @@
 import { api } from "encore.dev/api";
 import db from "../db";
+import { readFile } from "fs/promises";
+import { join } from "path";
 
 export interface ContactSubmission {
   id: number;
@@ -45,5 +47,27 @@ export const list = api<void, ListContactsResponse>(
     }
 
     return { submissions };
+  }
+);
+
+// Serve the frontend app
+export const serveFrontend = api.raw(
+  { expose: true, method: "GET", path: "/" },
+  async (req, resp) => {
+    try {
+      const indexPath = join(__dirname, "../../frontend/dist/index.html");
+      console.log("Attempting to read:", indexPath);
+      const indexContent = await readFile(indexPath, "utf-8");
+
+      resp.writeHead(200, {
+        "Content-Type": "text/html",
+        "Cache-Control": "no-cache"
+      });
+      resp.end(indexContent);
+    } catch (error) {
+      console.error("Frontend serving error:", error);
+      resp.writeHead(500, { "Content-Type": "text/plain" });
+      resp.end("Frontend not available: " + error.message);
+    }
   }
 );

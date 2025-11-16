@@ -24,7 +24,7 @@ export default function ContactForm() {
 
   // Use production Encore URL when deployed, localhost for development
   const isProduction = !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1');
-  const backend = new Client(isProduction ? Environment("production") : Local);
+  const backend = new Client(isProduction ? Environment("castle-paint-tile-backend-ctai") : Local);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

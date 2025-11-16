@@ -22532,7 +22532,7 @@ function ContactForm() {
     message: ""
   });
   const isProduction = !window.location.hostname.includes("localhost") && !window.location.hostname.includes("127.0.0.1");
-  const backend = new Client(isProduction ? Environment("production") : Local);
+  const backend = new Client(isProduction ? Environment("castle-paint-tile-backend-ctai") : Local);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -22725,7 +22725,7 @@ function AdminDashboard() {
     loadSubmissions();
   }, []);
   const isProduction = !window.location.hostname.includes("localhost") && !window.location.hostname.includes("127.0.0.1");
-  const backend = new Client(isProduction ? Environment("production") : Local);
+  const backend = new Client(isProduction ? Environment("castle-paint-tile-backend-ctai") : Local);
   const loadSubmissions = async () => {
     setLoading(true);
     setError("");
